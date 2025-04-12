@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visionary/feature/prompt/bloc/prompt_bloc.dart';
 import 'package:visionary/feature/prompt/ui/generate_Image_page.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -21,7 +23,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: GenerateImagePage(),
+      home: BlocProvider(
+        create: (context) => PromptBloc(),
+        child: GenerateImagePage(),
+      ),
     );
   }
 }
